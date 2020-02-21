@@ -89,6 +89,8 @@ namespace SemblableApi.Models
         }
         public void InfligeDegat(Semblable A, Semblable B) 
         {
+            int ADegat = A.GetValeurDeDegat();
+            int BAnnul = B.GetAnnulationDeDegat();
             int ValeurDegat = (A.GetValeurDeDegat() - B.GetAnnulationDeDegat()) > 0 ? (A.GetValeurDeDegat() - B.GetAnnulationDeDegat()) : 0;
             B.PointDeDegatActuel += ValeurDegat;
         }
@@ -100,20 +102,28 @@ namespace SemblableApi.Models
             Jet ChoixDeB;
             if (A.CalculePossibiliteJetAttaque().Count() == 3)
             {
-                ChoixDeA = A.CalculePossibiliteJetAttaque()[rand.Next(0, 3)];
+                int randd = rand.Next(0, 3);
+                IList<Jet> tempo = A.CalculePossibiliteJetAttaque();
+                ChoixDeA = tempo[randd];
             }
             else
             {
-                ChoixDeA = A.CalculePossibiliteJetAttaque()[rand.Next(0, 4)];
+                int randd = rand.Next(0, 4);
+                IList<Jet> tempo = A.CalculePossibiliteJetAttaque();
+                ChoixDeA = tempo[randd];
             }
 
             if (B.CalculePossibiliteJetDefense().Count() == 3)
             {
-                ChoixDeB = A.CalculePossibiliteJetDefense()[rand.Next(0, 3)];
+                int randd = rand.Next(0, 3);
+                IList<Jet> tempo = B.CalculePossibiliteJetDefense();
+                ChoixDeB = tempo[randd];
             }
             else
             {
-                ChoixDeB = A.CalculePossibiliteJetDefense()[rand.Next(0, 4)];
+                int randd = rand.Next(0, 4);
+                IList<Jet> tempo = B.CalculePossibiliteJetDefense();
+                ChoixDeB = tempo[randd];
             }
 
             if (ResultatShifumi.Victoire == ComparerShifumi(ChoixDeA,ChoixDeB) || (ResultatShifumi.Egalite == ComparerShifumi(ChoixDeA, ChoixDeB) && (A.Physique > B.Physique)))

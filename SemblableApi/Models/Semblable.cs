@@ -333,11 +333,11 @@ namespace SemblableApi.Models
         {
             Console.Write("GetValeurDeDegat" + this.Nom);
             int degat = 1;
-            if (Puissance == 2)
+            if (Puissance >= 2)
             {
                 degat += 1;
             }
-            if (Puissance == 4)
+            if (Puissance >= 4)
             {
                 degat += 1;
             }
